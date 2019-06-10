@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{csquotes}
+
+\restylefloat{table}
+\title{MSNBC Report}
+\begin{document}
+\maketitle
+
+\section{Business Understanding}
+\subsection{The Task}
+\begin{displayquote}
+Imagine that you work for the owners of one of the datasets below. They are looking to you to provide them insight into how their site and being used based on the data provided in the logs.
+
+We would like you to extract three interesting pieces of analysis and present them using appropriate visualizations and explain why the data is interesting in a manner that would provide clarity for senior management. For each piece of analysis you will also need to be able to provide details about how the data was extracted from the dataset including both tools and techniques.
+\end{displayquote}
+
+\subsection{Business Objective}
+Find 3 interesting insights in the MSNBC dataset.
+
+\subsection{Description}
+MSNBC is an American news cable and satellite television network that provides news coverage and political commentary from NBC News on current events. The MSNBC website shows some news articles sorted into different categories.
+
+\section{Data}
+The data itself is made up of number encoded sessions. Each line in the file represents a single session journey through the site. The are 17 different categories as listed below:
+
+\begin{itemize}
+\item 1 frontpage
+\item 2 news
+\item 3 tech
+\item 4 local
+\item 5 opinion
+\item 6 on-air
+\item 7 misc
+\item 8 weather
+\item 9 msn-news
+\item 10 health
+\item 11 living
+\item 12 business
+\item 13 msn-sports
+\item 14 sports
+\item 15 summary
+\item 16 bbs (bulletin board service)
+\item 17 travel
+\end{itemize}
+
+\section{Investigation}
+For this task I will seek to answer the following:
+\begin{itemize}
+\item What is the length of an average session?
+\item How many unique pages do our users view.
+\item Where does each page lead to?
+\item Can we label different types of customers? (word2vec clustering)
+\end{itemize}
+
+\section{What is the length of an average session?}
+A trivial start to this project is to simply count the lengths of an average session. The mean length of user journeys is 4.7 pages with 75 percent of users seeing less than 5 pages, the mode is 1 page.
+
+This lead me on to ask how different this behavior is for the number of unique pages visited instead. Here the mean was 1.7 suggesting while many users navigate between multiple pages those pages aren't unique. 75 percent of users viewed 2 unique pages or less throughout their session through the site.
+
+These two features are slightly correlated.
+
+Since we know most of our traffic leaves after 5 page navigations we could track this live in session and prompt the user somehow by showing them some more engaging content, or even try to monetize them more heavily on their final page using targeted advertisement. We are also beginning to answer a more subtle question relating to how different types of users utilize the MSNBC site.
+
+\section{Does each page lead somewhere?}
+Since pages content can be related is there a way to tell where users will go next?
+\end{document}

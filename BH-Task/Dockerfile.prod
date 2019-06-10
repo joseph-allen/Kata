@@ -1,0 +1,14 @@
+FROM python:3
+#FROM python:2
+
+COPY requirements ./requirements
+RUN pip install --no-cache-dir -r requirements/prod.txt
+
+COPY container-entrypoint.sh /entry
+RUN chmod 0755 /entry
+
+COPY my_data /data/my_data
+COPY src /data/src
+
+CMD ["prod"]
+ENTRYPOINT ["/entry"]

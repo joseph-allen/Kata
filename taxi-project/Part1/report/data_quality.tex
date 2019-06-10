@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\restylefloat{table}
+\begin{document}
+
+\section{Numbers of errors}
+\subsection{VendorID}
+By the summary the minimum value is 1 and the maximum value is 2. There are 1070 rows with value 1, and 3930 rows with value 1. Therefore nothing to be dropped here and no errors.
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+1    & 2 \\
+1070 & 3930
+\end{tabular}
+\end{table}
+
+\subsection{lpep\_pickup\_datetime Lpep\_dropoff\_datetime}
+Needs further investigation as datetime.
+
+\subsection{Store\_and\_fwd\_flag}
+By print the table I can observe that there are 4987 rows with value No, and 13 rows with value Yes. This leaves no errors.
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+Y    & N  \\
+13 & 4987
+\end{tabular}
+\end{table}
+
+\subsection{RateCodeID}
+By printing the table I can observe that there are 5000 valid rows.
+\begin{table}[H]
+\centering
+\begin{tabular}{lllll}
+1    & 2  & 3 & 4 & 5   \\
+4866 & 23 & 3 & 1 & 107
+\end{tabular}
+\end{table}
+
+\subsection{Pickup\_longitude}
+This variable has a minimum value of -75.12, and a maximum value of 0.00. This is a huge, and not limited to Manhattan value. There are 16 rows with 0.00 incorrectly set as a pickup longitude.
+
+
+\subsection{Pickup\_latitude}
+This variable has a minimum value of 0.00, and a maximum value of 40.90. This is a huge, and not limited to Manhattan value. There are 16 rows with 0.00 incorrectly set as a pickup longitude. This leaves a question, are these the same cases as the pickup longitude.
+
+
+\subsection{Dropoff\_longitude}
+This variable has a minimum value of -75.12, and a maximum value of 0.00. This is a huge, and not limited to Manhattan value. There are 16 rows with 0.00 incorrectly set as a pickup longitude. This leaves a question, are these the same cases as the pickup longitude.
+
+\subsection{Dropoff\_latitude}
+This variable has a minimum value of 0.00, and a maximum value of 40.93. This is a huge, and not limited to Manhattan value. There are 16 rows with 0.00 incorrectly set as a pickup longitude. This leaves a question, are these the same cases as the pickup longitude.
+
+\subsection{Passenger\_count}
+This variable has a minimum number of 0, with a maximum of 6. A journey shouldn't have zero passengers, and this is clearly a mistake.
+
+\subsection{Trip\_distance}
+There are 83 0 mile journeys which are errors.
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+zero values    & non-zero values  \\
+83 & 4917
+\end{tabular}
+\end{table}
+
+
+\subsection{Fare\_amount}
+The minimum value is -10, the maximum value is 124.50. There are 19 cases where the fare amount is less than or equal to 0. These are errors.
+
+\subsection{Extra}
+The minimum value is -1, the maximum value is 1. There are 5 cases lower than 0.
+
+\subsection{MTA\_tax}
+The minimum value is -0.5, the maximum value is 0.5. There are 3 cases lower than 0.
+
+\subsection{Tip\_amount}
+The minimum value is 0, the maximum value is 51.00. There is nothing missing here although there are suspiciously high tip amounts.
+
+\subsection{Tolls\_amount}
+The minimum value is 0, the maximum value is 20.00. There is nothing suspicious here.
+
+\subsection{Ehail\_fee}
+The whole column is NA, so we should simply drop this column
+
+\subsection{improvement\_surcharge}
+The improvement surcharge ranges from -0.3 to 0.3. Anything below 0 is an error.
+
+\subsection{Total\_amount}
+The minimum value for total amount is -10, the maximum is 125.30. Anything below 0 is an error, and there are 5 such values.
+
+\subsection{Payment\_type}
+There is nothing out of the ordinary here.
+\begin{table}[H]
+\centering
+\begin{tabular}{llll}
+1    & 2  & 3 & 4   \\
+2528 & 2432 & 24 & 16
+\end{tabular}
+\end{table}
+
+\subsection{Trip\_type}
+There is nothing out of the ordinary here.
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+1    & 2    \\
+4895 & 105
+\end{tabular}
+\end{table}
+
+\subsection{total\_time}
+The minimum value is 0, the maximum value is 86141. These are erroneously high and low values. The zeros are errors, the high rows are outliers and should be treated as such.
+86141 is just under a full day, there also shouldn't be 0 second journeys. drop 0 or below, there are also high outliers
+
+\subsection{Missing Data}
+The only missing data is in the ehail fees column, the entire column is NA, and so we cannot really use this.
+
+\subsection{Errors}
+Pickup/Dropoff Longitude/Latitude contribute 16 errors with 0 values.
+Passenger Count has 0 values, this is an error.
+Trip distance has 83 0 mile trips.
+Fare amount has 19 less than zero values.
+Extra has 5 cases less than 0.
+MTA tax has 3 cases less than 0.
+Improvement surcharge has negative values, these are errors.
+Total Amount, 5 values less than 0.
+Total time, 0 and 86141 is clearly an error.
+
+\subsection{Number of Errors}
+\begin{table}[H]
+\centering
+\begin{tabular}{lllllll}
+   0  &  1 &   2  &  3   & 4  &  5  &  6 \\
+4897 &  72 &  12  &  7  &  7   & 4 &   1
+\end{tabular}
+\end{table}
+
+
+\subsection{Errors per variable}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+VendorID  &  0 \\
+lpep\_pickup\_datetime & ?\\
+Lpep\_dropoff\_datetime& ?\\
+Store\_and\_fwd\_flag    & 0 \\
+RateCodeID          & 0 \\
+Pickup\_longitude    &  16\\
+Pickup\_latitude     &  16\\
+Dropoff\_longitude   &  16\\
+Dropoff\_latitude     & 16\\
+Passenger\_count       & 1\\
+Trip\_distance        &83\\
+Fare\_amount & 5\\
+Extra       & 2 \\
+MTA\_tax      &  3\\
+Tip\_amount    &   0\\
+Tolls\_amount   &    0\\
+Ehail\_fee       &     0\\
+improvement\_surcharge & 3\\
+Total\_amount         & 5\\
+Payment\_type          & 0\\
+Trip\_type            & 0\\
+total\_time            & 0
+\end{tabular}
+\end{table}
+
+Or in order of least trustworthy variables.
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+Trip\_distance        &83\\
+Pickup\_longitude    &  16\\
+Pickup\_latitude     &  16\\
+Dropoff\_longitude   &  16\\
+Dropoff\_latitude     & 16\\
+Fare\_amount & 5\\
+Total\_amount         & 5\\
+improvement\_surcharge & 3\\
+MTA\_tax      &  3\\
+Extra       & 2 \\
+Passenger\_count       & 1\\
+VendorID  &  0 \\
+Store\_and\_fwd\_flag    & 0 \\
+RateCodeID          & 0 \\
+Tip\_amount    &   0\\
+Tolls\_amount   &    0\\
+Ehail\_fee       &     0\\
+Payment\_type          & 0\\
+Trip\_type            & 0\\
+total\_time            & 0\\
+lpep\_pickup\_datetime & ?\\
+Lpep\_dropoff\_datetime& ?
+\end{tabular}
+\end{table}
+
+\subsection{Outliers}
+Tip Amount has outliers, though I don't know that these should be ignored. The 95th Quartile is 5.
+Total Time, There are extreme outliers which need to be taken into account. the 95th Quartile is 1989. The 2nd Quartile is 60. I would class anything satisfying these as outliers.
+
+\subsection{Number of Outliers}
+\begin{table}[H]
+\centering
+\begin{tabular}{lllllll}
+   0  &  1  &  2 \\
+4592  & 323  & 85
+\end{tabular}
+\end{table}
+
+\subsection{Number of Missing}
+The only missing values are for Ehail fees. I haven't added them since they are simply all missing.
+
+\section{Conclusion}
+I would suggest that any row that has an outlier or error isn't ready to be used in this model. Additionally i have not investigated the pickup and drop off times which may be invalid as well and require further investigation.
+
+\end{document}

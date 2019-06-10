@@ -1,0 +1,12 @@
+[
+    {
+        "component_title": "Typography",
+        "component_notes": "Too many type sizes and styles at once can spoil any layout. A typographic scale has a limited set of type sizes that work well together along with the layout grid.",
+        "component_code":  "<Typography variant='title' gutterBottom>Primary</Typography>"
+    },
+    {
+        "component_title": "Raised Button",
+        "component_notes": "Raised buttons are rectangular-shaped buttons. They may be used inline. They lift and display ink reactions on press.",
+        "component_code": "<Button variant='raised' color='primary' className={classes.button}>Primary</Button><Button variant='raised' color='secondary' className={classes.button}>  Secondary</Button><Button variant='raised' color='secondary' disabled className={classes.button}>  Disabled</Button>"
+    }
+]

@@ -1,0 +1,35 @@
+1. Introduction and objectives
+The analtysis will be devoted to apply multiple correspondence analysis to “New
+Yok taxis” data using FactorMineR library.
+
+The main objectives are to understand the relationships between the variable Total_amount
+and/or Total_amount_inclass and a series of categorical variables.
+
+2. Analysis of the variables influencing the total-amount (quantitative or in_class)
+through MCA.
+
+A MCA applied to these variables will provide a synthesis of them. The other variables,
+available in the file, have to be used as illustrative. Total_amount is also used as
+supplementary. Why?
+
+Transform Total_amount, Trip_distance and Fare_ amount into discrete variables.
+Transform the variable Extra into factor. See that MTA_tax, Tolls_amount and
+improvement_surcharge would be inutilizable as factor because or presenting only one
+category with number over 2% of the individuals.
+
+Apply MCA to the data frame with the following columns: "Total_amount",
+"Tamount_inclass" , "Trip_distance_inclass", "Fare_amount_inclass" , "Extra_fac" and
+"MTA_tax_fac"
+
+3. Comment the results following the usual outline:
+- concerning the factorial methods:
+ succession of eigenvalues and inertia ratios, number of retained factors
+ (justified), “names” of the factors that summarize their interpretation
+ representation of the results though clear and worked graphics.
+ factor interpretation, one by one or by planes
+ conclusion on the MCA results
+
+The visualization part is relevant. So, the graphics should be worked, with clear
+foots and/or captions.
+
+More info about MCA analysis: http://factominer.free.fr/factomethods/multiple-correspondence-analysis.html
