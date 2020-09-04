@@ -61,7 +61,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "^3.0.0",
-    "node-sass": "^3.7.0",
+    "node-sass": "^4.13.1",
     "npm": "^5.8.0",
     "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.7",
